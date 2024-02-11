@@ -10,15 +10,15 @@ export class UserdataService {
 
 
   addcontact(data: any) {
-    return this.http.post('http://localhost:5000/contact', data);
+    return this.http.post('https://construction-api-c904.onrender.com/contact', data);
   }
 
   addfeedback(data: any) {
-    return this.http.post('http://localhost:5000/feedback', data);
+    return this.http.post('https://construction-api-c904.onrender.com/feedback', data);
   }
 
   adduser(data: any) {
-    return this.http.post('http://localhost:5000/register', data);
+    return this.http.post('https://construction-api-c904.onrender.com/register', data);
   }
 
 
