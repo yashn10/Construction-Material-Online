@@ -1,0 +1,91 @@
+<body class="row">
+
+
+    <div class="col-lg-6 col-sm-12">
+        <img class="img-fluid" style="width: 100%;" src="https://source.unsplash.com/500x400/?construction">
+    </div>
+
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="container">
+            <div class="title">Registration</div>
+            <div class="content">
+
+                <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Full Name:</span>
+                            <input type="text" placeholder="Enter your name" name="fullname" required>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('fullname')!.invalid && userForm.get('fullname')!.touched">please
+                                    enter your
+                                    full name</span></p>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Email:</span>
+                            <input type="text" placeholder="Enter your email" name="email" required>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched">please
+                                    enter valid
+                                    email</span></p>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Phone Number:</span>
+                            <input type="text" placeholder="Enter your number" name="phone" required>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('phone')!.invalid && userForm.get('phone')!.touched">please
+                                    enter your phone
+                                    number</span></p>
+                        </div>
+
+                        <div class="input-box">
+                            <span for="inputState" class="form-label gender-title">Gender:</span>
+                            <select id="inputState" class="form-select" name="gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Prefered not to say</option>
+                            </select>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('gender')!.invalid && userForm.get('gender')!.touched">please
+                                    enter valid
+                                    value</span></p>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Password:</span>
+                            <input type="text" placeholder="Enter your password" name="password" required>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('password')!.invalid && userForm.get('password')!.touched">please
+                                    enter your
+                                    password</span></p>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Confirm Password:</span>
+                            <input type="text" placeholder="Confirm your password" name="cpassword" required>
+                            <p style="color: red;"><span
+                                    *ngIf="userForm.get('cpassword')!.invalid && userForm.get('cpassword')!.touched">confirm
+                                    your
+                                    password</span></p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="button col-lg-4 col-md-6 col-sm-12 mt-3">
+                            <input type="submit" value="Register" [disabled]="userForm.invalid">
+                        </div>
+                        <div class="login_link col-lg-8 col-md-6 col-sm-12 mt-4">
+                            Already a member? Login here <a href="login">Login</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>

@@ -1,0 +1,65 @@
+<div class="container mt-5 mb-5">
+
+    <div class="content">
+
+        <div class="left-side">
+            <div class="address details">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="topic">Address</div>
+                <div class="text-one">NP12</div>
+                <div class="text-two">Nagpur</div>
+            </div>
+            <div class="phone details">
+                <i class="fas fa-phone-alt"></i>
+                <div class="topic">Phone</div>
+                <div class="text-one">+0098 9893 5647</div>
+                <div class="text-two">+0096 3434 5678</div>
+            </div>
+            <div class="email details">
+                <i class="fas fa-envelope"></i>
+                <div class="topic">Email</div>
+                <div class="text-one"></div>
+
+            </div>
+        </div>
+
+
+        <div class="right-side">
+            <div class="topic-text">Send us a message</div>
+
+            <form class="form-group" [formGroup]="userForm" (ngSubmit)="addcontact(userForm.value)">
+                <div class="input-box">
+                    <input type="text" placeholder="Enter your name" name="name" formControlName="name" required>
+                    <p style="float: left; color: red;"><span
+                            *ngIf="userForm.get('name')!.invalid && userForm.get('name')!.touched">please enter your
+                            name</span></p>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Enter your email" name="email" formControlName="email" required>
+                    <p style="float: left; color: red;"><span
+                            *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched">please enter valid
+                            email</span></p>
+                </div>
+                <div class="input-box message-box">
+                    <input type="textarea" placeholder="Enter your message" name="message" formControlName="message"
+                        required>
+                    <p style="float: left; color: red;"><span
+                            *ngIf="userForm.get('message')!.invalid && userForm.get('message')!.touched">please enter
+                            your message</span></p>
+                </div>
+                <div class="button">
+                    <input type="button" class="btn btn-primary" value="clear all" (click)="clear()">
+                </div>
+                <div class="button ml-2">
+                    <input
+                        style="padding: 8px 15px; font-size: 18px; background-color: blue; border-radius: 7px; border: none;"
+                        type="submit" [disabled]="userForm.invalid" class="btn-primary" value="submit">
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
