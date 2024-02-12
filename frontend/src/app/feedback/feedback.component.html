@@ -5,16 +5,38 @@
             <div class="topic-text">Send us a Feedback</div>
             <form [formGroup]="feedbackForm" (ngSubmit)="addfeedback(feedbackForm.value)">
                 <div class="input-box">
-                    <input type="text" placeholder="Enter your Name" name="name" formControlName="name">
+                    <input type="text" placeholder="Enter your Name" name="name" formControlName="name" required>
+                    <p style="color: red;">
+                        <span *ngIf="feedbackForm.get('name')!.invalid && feedbackForm.get('name')!.touched">
+                            Please enter your name
+                        </span>
+                    </p>
                 </div>
                 <div class="input-box">
-                    <input type="email" placeholder="Enter your Email" name="email" formControlName="email">
+                    <input type="email" placeholder="Enter your Email" name="email" formControlName="email" required>
+                    <p style="color: red;">
+                        <span *ngIf="feedbackForm.get('email')!.invalid && feedbackForm.get('email')!.touched">
+                            Please enter valid email
+                        </span>
+                    </p>
                 </div>
                 <div class="input-box">
-                    <input type="number" placeholder="Enter your PhoneNumber" name="phone" formControlName="phone">
+                    <input type="number" placeholder="Enter your PhoneNumber" name="phone" formControlName="phone"
+                        required>
+                    <p style="color: red;">
+                        <span *ngIf="feedbackForm.get('phone')!.invalid && feedbackForm.get('phone')!.touched">
+                            Please enter your contact number
+                        </span>
+                    </p>
                 </div>
                 <div class="input-box message-box">
-                    <input type="textarea" placeholder="Enter your message" name="message" formControlName="message">
+                    <input type="textarea" placeholder="Enter your message" name="message" formControlName="message"
+                        required>
+                    <p style="color: red;">
+                        <span *ngIf="feedbackForm.get('message')!.invalid && feedbackForm.get('message')!.touched">
+                            Please enter your message
+                        </span>
+                    </p>
                 </div>
                 <div class="button">
                     <input type="button" class="btn-primary" value="clear all" (click)="clear()">
@@ -22,9 +44,6 @@
                 <div class="button ml-2">
                     <input type="submit" class="btn-primary" value="submit">
                 </div>
-                <!-- <div class="button ml-2">
-                    <input type="button" class="btn-primary" value="update" (click)="update()">
-                </div> -->
             </form>
         </div>
     </div>

@@ -7,6 +7,20 @@
 
 }
 
+ul {
+	width: 100%;
+	justify-content: center;
+}
+
+.nav-item {
+	font-weight: 500;
+	font-style: italic;
+}
+
+.nav-item .dropdown-menu a {
+	font-weight: 500;
+}
+
 nav {
 	display: flex;
 	width: 100%;
@@ -170,7 +184,7 @@ input[type="checkbox"] {
 	font-size: 16px;
 	color: black;
 	text-align: center;
-	padding: 18px 22px;
+	padding: 12px 10px;
 	text-decoration: none;
 }
 
@@ -186,8 +200,6 @@ input[type="checkbox"] {
 	top: 100px;
 	left: 200px;
 }
-
-
 
 .imgBx {
 	/* Add shadows to create the "imgBx" effect */
@@ -226,7 +238,6 @@ input[type="checkbox"] {
 	display: block;
 }
 
-
 /* Top left text */
 .top-left {
 	position: absolute;
@@ -257,8 +268,6 @@ input[type="checkbox"] {
 	margin-left: -25px;
 }
 
-
-
 .card {
 	/* Add shadows to create the "card" effect */
 	box-shadow: 0 8px 12px 0 rgba(238, 7, 7, 0.949);
@@ -269,8 +278,6 @@ input[type="checkbox"] {
 .card:hover {
 	box-shadow: 0 20px 28px 0 rgba(24, 22, 22, 0.951);
 }
-
-
 
 .footers a {
 	color: #696969;
