@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userloggedin == true">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#" routerLink="home" style="margin-left: 15px;"><b>Home</b></a>
@@ -36,20 +36,43 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="signup" style="margin-left: 15px;"><b>Signup</b></a>
+        <a class="nav-link" href="#" routerLink="dashboard" style="margin-left: 15px;"><b>My Dashboard</b></a>
       </li>
-
-      <!-- <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="dashboard" style="margin-left: 35px;"><b>My Dashboard</b></a>
-      </li> -->
 
       <li class="nav-item active">
         <a class="nav-link" routerLink="feedback" style="margin-left: 15px;"><b>Feedback</b></a>
       </li>
 
+      <li class="nav-item active">
+        <a class="nav-link" style="margin-left: 15px;" (click)="logout()"><b>Logout</b></a>
+      </li>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-    </form>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userloggedin == false">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="home" style="margin-left: 15px;"><b>Home</b></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="about" style="margin-left: 15px;"><b>About</b></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="projects" style="margin-left: 15px;"><b>Projects</b></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="signup" style="margin-left: 15px;"><b>Signup</b></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="#" routerLink="login" style="margin-left: 15px;"><b>Login</b></a>
+      </li>
+
+    </ul>
   </div>
 </nav>
 

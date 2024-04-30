@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ElectricianComponent } from './electrician/electrician.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TilesComponent } from './tiles/tiles.component';
     NopageComponent,
     ElectricianComponent,
     ProjectsComponent,
-    TilesComponent
+    TilesComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

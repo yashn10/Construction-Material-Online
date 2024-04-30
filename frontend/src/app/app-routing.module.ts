@@ -14,6 +14,7 @@ import { FurnitureComponent } from './furniture/furniture.component';
 import { ElectricianComponent } from './electrician/electrician.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
 
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path: 'electrical',
     component: ElectricianComponent
+  },
+  {
+    path: 'checkout/:id',
+    component: CheckoutComponent
   },
   {
     path: '**',

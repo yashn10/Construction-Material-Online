@@ -1,6 +1,6 @@
-<section class="banner" id="banner" style="position: relative;width:100%;min-height: 80vh;display: flex;justify-content: center;align-items: center;
+<!-- <section class="banner" id="banner" style="position: relative;width:100%;min-height: 80vh;display: flex;justify-content: center;align-items: center;
       ;background-size: cover;background-image: url(https://source.unsplash.com/1000x500/?painter);">
-</section>
+</section> -->
 
 <section class="banner1" id="banner1">
     <div class="content text-center">
@@ -10,72 +10,23 @@
 </section>
 
 <section class="testimonials" id="testimonials"
-    style="background: url(https://source.unsplash.com/1500x1500/?painting) ;background-size: cover;">
-    <div class="title white">
-        <h1 class="titleText" style="margin-left: 10%;color: black;"></h1>
-    </div>
+    style="background: url(https://source.unsplash.com/1500x1500/?painting) ;background-size: cover; display: flex; flex-wrap: wrap; justify-content: center;">
 
-    <div class="content">
+
+    <div class="content" *ngFor="let paint of paintlist">
         <div class="box">
             <div class="imgBx">
-                <img src="../../assets/asian paints.jpg">
+                <img src="{{paint.image}}">
             </div>
 
             <div class="namePrice">
-                <h3 style="text-align: left;">Asian Paint</h3>
-                <span>2000</span>
+                <h3 style="text-align: left;">{{paint.title}}</h3>
+                <span>price - {{paint.price}}</span>
             </div>
-            <p>Asian Paints Royale Health Shield Anti-Bacterial All Surface Coating (Gloss Finish), DIY Protective Clear
-                Coat for Wall, Wood & Metal –
+            <p>{{paint.description}}
             </p>
 
-            <a class="nav-link" class="btn">Buy Now</a>
-        </div>
-
-        <div class="box">
-            <div class="imgBx">
-                <img src="../../assets/dulux paints.jpg">
-            </div>
-            <div class="namePrice">
-                <h3>Dulux Paint </h3>
-                <span>3000</span>
-            </div>
-            <p>Dulux Professional Solitaire A1000 is a water based, high quality durable and washable emulsion paint
-                with rich matt finish
-            </p>
-
-            <a class="nav-link" class="btn">Buy Now</a>
-        </div>
-
-        <div class="box">
-            <div class="imgBx">
-                <img src="../../assets/burger paints.jpg">
-            </div>
-            <div class="namePrice">
-                <h3>Berger Paint </h3>
-                <span>1500</span>
-            </div>
-            <p>Berger Weather Coat Champ Paint for Exterior and Interior Walls (White).Berger Weather Coat Champ Paint
-                for Exterior and Interior Walls (White).
-            </p>
-
-            <a class="nav-link" class="btn">Buy Now</a>
-        </div>
-
-        <div class="box">
-            <div class="imgBx">
-                <img src="../../assets/fixit paints.jpg">
-            </div>
-
-            <div class="namePrice">
-                <h3>Fixit Paint</h3>
-                <span>1800</span>
-            </div>
-            <p>Dr. Fixit 201 Crack X Paste, Crack Filler - 1Kg+Dr.Fixit 604 Primeseal acrylic coating For External Wall
-                Waterproofing - 1 Litre
-            </p>
-
-            <a class="nav-link" class="btn">Buy Now</a>
+            <a class="nav-link" class="btn" routerLink="/checkout/{{paint._id}}">Buy Now</a>
         </div>
     </div>
 

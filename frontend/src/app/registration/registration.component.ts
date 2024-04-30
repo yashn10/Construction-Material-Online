@@ -16,7 +16,7 @@ export class RegistrationComponent {
   userForm!: FormGroup
 
 
-  constructor(private formbuilder: FormBuilder, private http: HttpClient, private router: Router, private backend: UserdataService) {
+  constructor(private formbuilder: FormBuilder, private router: Router, private backend: UserdataService) {
     this.userForm = this.formbuilder.group({
       fullname: [''],
       email: [''],

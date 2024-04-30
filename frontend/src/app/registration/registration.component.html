@@ -15,7 +15,8 @@
                     <div class="user-details">
                         <div class="input-box">
                             <span class="details">Full Name:</span>
-                            <input type="text" placeholder="Enter your name" name="fullname" required>
+                            <input type="text" placeholder="Enter your name" formControlName="fullname" name="fullname"
+                                required>
                             <p style="color: red;"><span
                                     *ngIf="userForm.get('fullname')!.invalid && userForm.get('fullname')!.touched">please
                                     enter your
@@ -24,7 +25,8 @@
 
                         <div class="input-box">
                             <span class="details">Email:</span>
-                            <input type="text" placeholder="Enter your email" name="email" required>
+                            <input type="text" placeholder="Enter your email" formControlName="email" name="email"
+                                required>
                             <p style="color: red;"><span
                                     *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched">please
                                     enter valid
@@ -33,7 +35,8 @@
 
                         <div class="input-box">
                             <span class="details">Phone Number:</span>
-                            <input type="text" placeholder="Enter your number" name="phone" required>
+                            <input type="text" placeholder="Enter your number" formControlName="phone" name="phone"
+                                required>
                             <p style="color: red;"><span
                                     *ngIf="userForm.get('phone')!.invalid && userForm.get('phone')!.touched">please
                                     enter your phone
@@ -42,7 +45,7 @@
 
                         <div class="input-box">
                             <span for="inputState" class="form-label gender-title">Gender:</span>
-                            <select id="inputState" class="form-select" name="gender">
+                            <select id="inputState" class="form-select" name="gender" formControlName="gender">
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Prefered not to say</option>
@@ -55,7 +58,8 @@
 
                         <div class="input-box">
                             <span class="details">Password:</span>
-                            <input type="text" placeholder="Enter your password" name="password" required>
+                            <input type="text" placeholder="Enter your password" formControlName="password"
+                                name="password" required>
                             <p style="color: red;"><span
                                     *ngIf="userForm.get('password')!.invalid && userForm.get('password')!.touched">please
                                     enter your
@@ -64,7 +68,8 @@
 
                         <div class="input-box">
                             <span class="details">Confirm Password:</span>
-                            <input type="text" placeholder="Confirm your password" name="cpassword" required>
+                            <input type="text" placeholder="Confirm your password" formControlName="cpassword"
+                                name="cpassword" required>
                             <p style="color: red;"><span
                                     *ngIf="userForm.get('cpassword')!.invalid && userForm.get('cpassword')!.touched">confirm
                                     your
