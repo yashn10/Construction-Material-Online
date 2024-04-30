@@ -12,51 +12,51 @@ export class UserdataService {
 
 
   addcontact(data: any) {
-    return this.http.post('http://localhost:5000/contact', data);
+    return this.http.post('https://construction-api-c904.onrender.com/contact', data);
   }
 
   addfeedback(data: any) {
-    return this.http.post('http://localhost:5000/feedback', data);
+    return this.http.post('https://construction-api-c904.onrender.com/feedback', data);
   }
 
   adduser(data: any) {
-    return this.http.post('http://localhost:5000/register', data);
+    return this.http.post('https://construction-api-c904.onrender.com/register', data);
   }
 
   loginuser(data: any) {
-    return this.http.post('http://localhost:5000/login', data);
+    return this.http.post('https://construction-api-c904.onrender.com/login', data);
   }
 
   getpaints() {
-    return this.http.get('http://localhost:5000/paint');
+    return this.http.get('https://construction-api-c904.onrender.com/paint');
   }
 
   getelectrical() {
-    return this.http.get('http://localhost:5000/electrical');
+    return this.http.get('https://construction-api-c904.onrender.com/electrical');
   }
 
   getinterior() {
-    return this.http.get('http://localhost:5000/interior');
+    return this.http.get('https://construction-api-c904.onrender.com/interior');
   }
 
   getfurniture() {
-    return this.http.get('http://localhost:5000/furniture');
+    return this.http.get('https://construction-api-c904.onrender.com/furniture');
   }
 
   getpaintbyid(id: any) {
-    return this.http.get(`http://localhost:5000/paint/${id}`);
+    return this.http.get(`https://construction-api-c904.onrender.com/paint/${id}`);
   }
 
   getelectricalbyid(id: any) {
-    return this.http.get(`http://localhost:5000/electrical/${id}`);
+    return this.http.get(`https://construction-api-c904.onrender.com/electrical/${id}`);
   }
 
   getinteriorbyid(id: any) {
-    return this.http.get(`http://localhost:5000/interior/${id}`);
+    return this.http.get(`https://construction-api-c904.onrender.com/interior/${id}`);
   }
 
   getfurniturebyid(id: any) {
-    return this.http.get(`http://localhost:5000/furniture/${id}`);
+    return this.http.get(`https://construction-api-c904.onrender.com/furniture/${id}`);
   }
 
 
