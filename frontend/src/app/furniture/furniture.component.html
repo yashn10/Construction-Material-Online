@@ -25,7 +25,8 @@
             </div>
             <p>{{data.description}}</p>
 
-            <a class="nav-link" class="btn" routerLink="/checkout/{{data._id}}">Buy Now</a>
+            <a class="nav-link" class="btn" *ngIf="userloggedin == true" routerLink="/checkout/{{data._id}}">Buy Now</a>
+            <a class="nav-link" class="btn" *ngIf="userloggedin == false" routerLink="/login">Login Now</a>
         </div>
     </div>
 

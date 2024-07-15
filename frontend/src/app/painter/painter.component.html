@@ -26,7 +26,9 @@
             <p>{{paint.description}}
             </p>
 
-            <a class="nav-link" class="btn" routerLink="/checkout/{{paint._id}}">Buy Now</a>
+            <a class="nav-link" class="btn" *ngIf="userloggedin == true" routerLink="/checkout/{{paint._id}}">Buy
+                Now</a>
+            <a class="nav-link" class="btn" *ngIf="userloggedin == false" routerLink="/login">Login Now</a>
         </div>
     </div>
 

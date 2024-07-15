@@ -9,11 +9,19 @@ import { UserdataService } from '../service/userdata.service';
 export class PainterComponent implements OnInit {
 
   paintlist: any = [];
+  userloggedin = false;
 
   constructor(private backend: UserdataService) { }
 
   ngOnInit(): void {
-    this.paints()
+    this.paints();
+
+    const user = localStorage.getItem('User');
+    if (user) {
+      this.userloggedin = true
+    } else {
+      this.userloggedin = false
+    }
   }
 
 

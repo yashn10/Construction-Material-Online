@@ -8,12 +8,20 @@ import { UserdataService } from '../service/userdata.service';
 })
 export class TilesComponent implements OnInit {
 
-  data: any = []
+  data: any = [];
+  userloggedin = false;
 
   constructor(private backend: UserdataService) { }
 
   ngOnInit(): void {
     this.interior();
+
+    const user = localStorage.getItem('User');
+    if (user) {
+      this.userloggedin = true
+    } else {
+      this.userloggedin = false
+    }
   }
 
   interior() {

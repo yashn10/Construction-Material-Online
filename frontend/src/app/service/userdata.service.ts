@@ -24,23 +24,28 @@ export class UserdataService {
   }
 
   loginuser(data: any) {
-    return this.http.post('https://construction-api-c904.onrender.com/login', data);
+    // return this.http.post('https://construction-api-c904.onrender.com/login', data);
+    return this.http.post('http://localhost:5000/login', data);
   }
 
   getpaints() {
-    return this.http.get('https://construction-api-c904.onrender.com/paint');
+    // return this.http.get('https://construction-api-c904.onrender.com/paint');
+    return this.http.get('http://localhost:5000/paint');
   }
 
   getelectrical() {
-    return this.http.get('https://construction-api-c904.onrender.com/electrical');
+    // return this.http.get('https://construction-api-c904.onrender.com/electrical');
+    return this.http.get('http://localhost:5000/electrical');
   }
 
   getinterior() {
-    return this.http.get('https://construction-api-c904.onrender.com/interior');
+    // return this.http.get('https://construction-api-c904.onrender.com/interior');
+    return this.http.get('http://localhost:5000/interior');
   }
 
   getfurniture() {
-    return this.http.get('https://construction-api-c904.onrender.com/furniture');
+    // return this.http.get('https://construction-api-c904.onrender.com/furniture');
+    return this.http.get('http://localhost:5000/furniture');
   }
 
   getpaintbyid(id: any) {

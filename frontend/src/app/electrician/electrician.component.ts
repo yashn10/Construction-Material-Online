@@ -9,11 +9,19 @@ import { UserdataService } from '../service/userdata.service';
 export class ElectricianComponent implements OnInit {
 
   data: any = []
+  userloggedin = false
 
   constructor(private backend: UserdataService) { }
 
   ngOnInit(): void {
     this.electrical();
+
+    const user = localStorage.getItem('User');
+    if (user) {
+      this.userloggedin = true
+    } else {
+      this.userloggedin = false
+    }
   }
 
   electrical() {
