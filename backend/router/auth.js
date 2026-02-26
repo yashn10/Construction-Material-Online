@@ -15,9 +15,10 @@ router.post('/feedback', async (req, res) => {
 
     if (!name || !email || !phone || !message) {
         return res.status(422).json({ error: "please fill all the fields" });
-    } else {
-        const user = new Feedback({ name, email, phone, message });
+    }
 
+    try {
+        const user = new Feedback({ name, email, phone, message });
         const saveuser = await user.save();
 
         if (saveuser) {
@@ -25,6 +26,9 @@ router.post('/feedback', async (req, res) => {
         } else {
             return res.status(500).json({ error: "feedback error" });
         }
+    } catch (error) {
+        console.log("error", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
 });
 
@@ -34,17 +38,20 @@ router.post('/contact', async (req, res) => {
 
     if (!name || !email || !message) {
         return res.status(422).json({ error: "please fill all the fields properly" });
-    } else {
-        const user = new Contact({ name, email, message });
+    }
 
+    try {
+        const user = new Contact({ name, email, message });
         const saveuser = await user.save();
 
         if (saveuser) {
             return res.status(201).json({ message: "details send successfully" });
-            console.log(req.body);
         } else {
             return res.status(500).json({ error: "failed to send details" });
         }
+    } catch (error) {
+        console.log("error", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
 });
 
@@ -78,140 +85,141 @@ router.post('/register', async (req, res) => {
         }
     } catch (error) {
         console.log("error", error);
+        return res.status(500).json({ error: "Internal server error" });
     }
-
 });
 
 
 router.get('/register', async (req, res) => {
     try {
         const user = await Register.find();
-        return res.status(201).json(user);
+        return res.status(200).json(user);
     } catch (error) {
         console.log("error", error);
         return res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.post('/login', async (req, res) => {
-
     const { email, password } = req.body;
 
     if (!email || !password) {
         return res.status(400).json({ error: "please fill all the fields" });
-    } else {
-        try {
-            const user = await Register.findOne({ email: email });
-
-            if (user) {
-                const isMatch = bcrypt.compare(password, user.password);
-
-                if (isMatch) {
-                    const token = await user.generateAuthToken();
-                    return res.status(201).json({ token, message: "User login successfully" });
-                } else {
-                    return res.status(401).json({ error: "invalid credentials" });
-                }
-            } else {
-                res.status(401).json({ error: "invalid credentials" });
-            }
-
-        } catch (error) {
-            console.log("server side error", error);
-        }
-
     }
 
+    try {
+        const user = await Register.findOne({ email: email });
+
+        if (user) {
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (isMatch) {
+                const token = await user.generateAuthToken();
+                return res.status(200).json({ token, message: "User login successfully" });
+            } else {
+                return res.status(401).json({ error: "invalid credentials" });
+            }
+        } else {
+            return res.status(401).json({ error: "invalid credentials" });
+        }
+    } catch (error) {
+        console.log("server side error", error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 
 router.get('/paint', async (req, res) => {
     try {
         const items = await Paint.find();
-        res.send(items);
+        res.status(200).json(items);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/electrical', async (req, res) => {
     try {
         const items = await Electrical.find();
-        res.send(items);
+        res.status(200).json(items);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/interior', async (req, res) => {
     try {
         const items = await Interior.find();
-        res.send(items);
+        res.status(200).json(items);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/furniture', async (req, res) => {
     try {
         const items = await Furniture.find();
-        res.send(items);
+        res.status(200).json(items);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/paint/:id', async (req, res) => {
-    const _id = req.params.id
-
     try {
-        const item = await Paint.findById(_id);
-        res.send(item);
+        const item = await Paint.findById(req.params.id);
+        if (!item) return res.status(404).json({ error: "Item not found" });
+        res.status(200).json(item);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/electrical/:id', async (req, res) => {
-    const _id = req.params.id;
-
     try {
-        const item = await Electrical.findById(_id);
-        res.send(item);
+        const item = await Electrical.findById(req.params.id);
+        if (!item) return res.status(404).json({ error: "Item not found" });
+        res.status(200).json(item);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/interior/:id', async (req, res) => {
-    const _id = req.params.id;
-
     try {
-        const item = await Interior.findById(_id);
-        res.send(item);
+        const item = await Interior.findById(req.params.id);
+        if (!item) return res.status(404).json({ error: "Item not found" });
+        res.status(200).json(item);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 router.get('/furniture/:id', async (req, res) => {
-    const _id = req.params.id;
-
     try {
-        const item = await Furniture.findById(_id);
-        res.send(item);
+        const item = await Furniture.findById(req.params.id);
+        if (!item) return res.status(404).json({ error: "Item not found" });
+        res.status(200).json(item);
     } catch (error) {
         console.log("error", error);
+        res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 module.exports = router;

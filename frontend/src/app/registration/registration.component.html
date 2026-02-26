@@ -1,96 +1,91 @@
-<body class="row">
+<div class="register-page">
+    <div class="register-container">
+        <div class="register-visual">
+            <img src="assets/construction.jpg" alt="Construction">
+            <div class="visual-overlay">
+                <h2>Join <span>SD Construction</span></h2>
+                <p>Create an account to access premium construction materials and services</p>
+            </div>
+        </div>
 
+        <div class="register-form-section">
+            <div class="register-card">
+                <div class="register-header">
+                    <h2>Create Account</h2>
+                    <p>Fill in the details below to get started</p>
+                </div>
 
-    <div class="col-lg-6 col-sm-12">
-        <img class="img-fluid" style="width: 100%;" src="https://source.unsplash.com/500x400/?construction">
-    </div>
-
-
-    <div class="col-lg-6 col-sm-12">
-        <div class="container">
-            <div class="title">Registration</div>
-            <div class="content">
-
-                <form [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
-                    <div class="user-details">
-                        <div class="input-box">
-                            <span class="details">Full Name:</span>
-                            <input type="text" placeholder="Enter your name" formControlName="fullname" name="fullname"
-                                required>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('fullname')!.invalid && userForm.get('fullname')!.touched">please
-                                    enter your
-                                    full name</span></p>
+                <form class="form-modern" [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your full name" formControlName="fullname">
+                            <p class="error-text"
+                                *ngIf="userForm.get('fullname')!.invalid && userForm.get('fullname')!.touched">
+                                Full name is required
+                            </p>
                         </div>
 
-                        <div class="input-box">
-                            <span class="details">Email:</span>
-                            <input type="text" placeholder="Enter your email" formControlName="email" name="email"
-                                required>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched">please
-                                    enter valid
-                                    email</span></p>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Enter your email" formControlName="email">
+                            <p class="error-text"
+                                *ngIf="userForm.get('email')!.invalid && userForm.get('email')!.touched">
+                                Valid email is required
+                            </p>
                         </div>
-
-                        <div class="input-box">
-                            <span class="details">Phone Number:</span>
-                            <input type="text" placeholder="Enter your number" formControlName="phone" name="phone"
-                                required>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('phone')!.invalid && userForm.get('phone')!.touched">please
-                                    enter your phone
-                                    number</span></p>
-                        </div>
-
-                        <div class="input-box">
-                            <span for="inputState" class="form-label gender-title">Gender:</span>
-                            <select id="inputState" class="form-select" name="gender" formControlName="gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Prefered not to say</option>
-                            </select>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('gender')!.invalid && userForm.get('gender')!.touched">please
-                                    enter valid
-                                    value</span></p>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details">Password:</span>
-                            <input type="text" placeholder="Enter your password" formControlName="password"
-                                name="password" required>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('password')!.invalid && userForm.get('password')!.touched">please
-                                    enter your
-                                    password</span></p>
-                        </div>
-
-                        <div class="input-box">
-                            <span class="details">Confirm Password:</span>
-                            <input type="text" placeholder="Confirm your password" formControlName="cpassword"
-                                name="cpassword" required>
-                            <p style="color: red;"><span
-                                    *ngIf="userForm.get('cpassword')!.invalid && userForm.get('cpassword')!.touched">confirm
-                                    your
-                                    password</span></p>
-                        </div>
-
                     </div>
 
-                    <div class="row">
-                        <div class="button col-lg-4 col-md-6 col-sm-12 mt-3">
-                            <input type="submit" value="Register" [disabled]="userForm.invalid">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Enter your phone number" formControlName="phone">
+                            <p class="error-text"
+                                *ngIf="userForm.get('phone')!.invalid && userForm.get('phone')!.touched">
+                                Phone number is required
+                            </p>
                         </div>
-                        <div class="login_link col-lg-8 col-md-6 col-sm-12 mt-4">
-                            Already a member? Login here <a href="login">Login</a>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select formControlName="gender">
+                                <option value="" disabled>Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Prefer not to say</option>
+                            </select>
                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Create a password" formControlName="password">
+                            <p class="error-text"
+                                *ngIf="userForm.get('password')!.invalid && userForm.get('password')!.touched">
+                                Password is required
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="Confirm your password" formControlName="cpassword">
+                            <p class="error-text"
+                                *ngIf="userForm.get('cpassword')!.invalid && userForm.get('cpassword')!.touched">
+                                Please confirm your password
+                            </p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary-custom register-submit" [disabled]="userForm.invalid">
+                        Create Account <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <div class="register-footer">
+                        <p>Already have an account? <a routerLink="/login">Sign In</a></p>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
-
-
-</body>
+</div>

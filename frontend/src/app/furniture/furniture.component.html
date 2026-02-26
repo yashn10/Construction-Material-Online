@@ -1,33 +1,38 @@
-<!-- <section class="banner" id="banner" style="position: relative;width:100%;min-height: 80vh;display: flex;justify-content: center;align-items: center;
-      ;background-size: cover;background-image: url(https://source.unsplash.com/1000x500/?furniture-works);">
-</section> -->
-
-<section class="banner1" id="banner1">
-    <div class="content text-center">
-        <h4 style="text-decoration: underline;">Furniture Material We Offer & Provides</h4><br>
-        <h2><span style="color:red ;"> Our</span>-Furniture Materials</h2>
+<section class="product-page-header">
+    <div class="container">
+        <span class="page-badge"><i class="fas fa-couch"></i> Furniture</span>
+        <h1>Furniture Collection</h1>
+        <p>Stylish and durable furniture for every room and space</p>
     </div>
 </section>
 
-<section class="testimonials" id="testimonials"
-    style="background: url(https://source.unsplash.com/1500x1500/?furnitures) ;background-size: cover; display: flex; flex-wrap: wrap; justify-content: center;">
-
-
-    <div class="content" *ngFor="let data of data">
-        <div class="box">
-            <div class="imgBx">
-                <img src="{{data.image}}">
+<section class="product-listing section-padding">
+    <div class="container">
+        <div class="product-grid" *ngIf="data.length > 0">
+            <div class="product-card" *ngFor="let item of data">
+                <div class="product-img">
+                    <img [src]="item.image" [alt]="item.title">
+                </div>
+                <div class="product-body">
+                    <h3>{{item.title}}</h3>
+                    <p class="product-desc">{{item.description}}</p>
+                    <div class="product-footer">
+                        <span class="badge-price">₹ {{item.price}}</span>
+                        <a *ngIf="userloggedin" routerLink="/checkout/{{item._id}}" class="btn-primary-custom btn-sm">
+                            Buy Now <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a *ngIf="!userloggedin" routerLink="/login" class="btn-outline-custom btn-sm">
+                            Login to Buy
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="namePrice">
-                <h3 style="text-align: left;">{{data.title}}</h3>
-                <span>price - {{data.price}}</span>
-            </div>
-            <p>{{data.description}}</p>
-
-            <a class="nav-link" class="btn" *ngIf="userloggedin == true" routerLink="/checkout/{{data._id}}">Buy Now</a>
-            <a class="nav-link" class="btn" *ngIf="userloggedin == false" routerLink="/login">Login Now</a>
+        <div class="empty-state" *ngIf="data.length === 0">
+            <i class="fas fa-box-open"></i>
+            <h3>No products available</h3>
+            <p>Products will appear here once they are added to the catalog.</p>
         </div>
     </div>
-
 </section>

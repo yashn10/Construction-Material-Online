@@ -1,1 +1,82 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="dashboard-welcome">
+            <div class="welcome-text">
+                <h1>Welcome back! <span class="accent-text">{{userEmail}}</span></h1>
+                <p>Manage your orders and explore our construction material catalog</p>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-box"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Products Available</span>
+                    <strong>500+</strong>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-tags"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Categories</span>
+                    <strong>5</strong>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-truck"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Delivery Status</span>
+                    <strong>Active</strong>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                <div class="stat-info">
+                    <span class="stat-label">Support</span>
+                    <strong>24/7</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="section-header" style="margin-top: 40px;">
+            <h2>Quick Actions</h2>
+            <p>Browse our product categories</p>
+        </div>
+
+        <div class="quick-actions">
+            <a routerLink="/painter" class="action-card">
+                <div class="action-icon"><i class="fas fa-paint-roller"></i></div>
+                <h4>Paints</h4>
+                <p>Browse paint materials</p>
+            </a>
+            <a routerLink="/electrical" class="action-card">
+                <div class="action-icon"><i class="fas fa-bolt"></i></div>
+                <h4>Electrical</h4>
+                <p>Electrical supplies</p>
+            </a>
+            <a routerLink="/furniture" class="action-card">
+                <div class="action-icon"><i class="fas fa-couch"></i></div>
+                <h4>Furniture</h4>
+                <p>Furniture catalog</p>
+            </a>
+            <a routerLink="/interior" class="action-card">
+                <div class="action-icon"><i class="fas fa-home"></i></div>
+                <h4>Interior</h4>
+                <p>Interior & tiles</p>
+            </a>
+            <a routerLink="/contact" class="action-card">
+                <div class="action-icon"><i class="fas fa-envelope"></i></div>
+                <h4>Contact</h4>
+                <p>Get in touch</p>
+            </a>
+            <a routerLink="/feedback" class="action-card">
+                <div class="action-icon"><i class="fas fa-comment-dots"></i></div>
+                <h4>Feedback</h4>
+                <p>Share your feedback</p>
+            </a>
+        </div>
+    </div>
+</div>

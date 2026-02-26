@@ -1,51 +1,55 @@
-<div class="container-fluid">
+<div class="feedback-page section-padding">
+    <div class="container">
+        <div class="feedback-wrapper">
+            <div class="section-header">
+                <h2>Share Your Feedback</h2>
+                <p>We value your feedback and strive to improve our services</p>
+            </div>
 
-    <div class="content">
-        <div class="right-side">
-            <div class="topic-text">Send us a Feedback</div>
-            <form [formGroup]="feedbackForm" (ngSubmit)="addfeedback(feedbackForm.value)">
-                <div class="input-box">
-                    <input type="text" placeholder="Enter your Name" name="name" formControlName="name" required>
-                    <p style="color: red;">
-                        <span *ngIf="feedbackForm.get('name')!.invalid && feedbackForm.get('name')!.touched">
-                            Please enter your name
-                        </span>
-                    </p>
-                </div>
-                <div class="input-box">
-                    <input type="email" placeholder="Enter your Email" name="email" formControlName="email" required>
-                    <p style="color: red;">
-                        <span *ngIf="feedbackForm.get('email')!.invalid && feedbackForm.get('email')!.touched">
-                            Please enter valid email
-                        </span>
-                    </p>
-                </div>
-                <div class="input-box">
-                    <input type="number" placeholder="Enter your PhoneNumber" name="phone" formControlName="phone"
-                        required>
-                    <p style="color: red;">
-                        <span *ngIf="feedbackForm.get('phone')!.invalid && feedbackForm.get('phone')!.touched">
-                            Please enter your contact number
-                        </span>
-                    </p>
-                </div>
-                <div class="input-box message-box">
-                    <input type="textarea" placeholder="Enter your message" name="message" formControlName="message"
-                        required>
-                    <p style="color: red;">
-                        <span *ngIf="feedbackForm.get('message')!.invalid && feedbackForm.get('message')!.touched">
-                            Please enter your message
-                        </span>
-                    </p>
-                </div>
-                <div class="button">
-                    <input type="button" class="btn-primary" value="clear all" (click)="clear()">
-                </div>
-                <div class="button ml-2">
-                    <input type="submit" class="btn-primary" value="submit">
-                </div>
-            </form>
+            <div class="feedback-card">
+                <form class="form-modern" [formGroup]="feedbackForm" (ngSubmit)="addfeedback(feedbackForm.value)">
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Enter your name" formControlName="name">
+                            <p class="error-text"
+                                *ngIf="feedbackForm.get('name')!.invalid && feedbackForm.get('name')!.touched">Name is
+                                required</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Enter your email" formControlName="email">
+                            <p class="error-text"
+                                *ngIf="feedbackForm.get('email')!.invalid && feedbackForm.get('email')!.touched">Valid
+                                email required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter your phone number" formControlName="phone">
+                        <p class="error-text"
+                            *ngIf="feedbackForm.get('phone')!.invalid && feedbackForm.get('phone')!.touched">Phone
+                            number required</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea rows="5" placeholder="Write your feedback here..."
+                            formControlName="message"></textarea>
+                        <p class="error-text"
+                            *ngIf="feedbackForm.get('message')!.invalid && feedbackForm.get('message')!.touched">Message
+                            is required</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline-custom" (click)="clear()">Clear</button>
+                        <button type="submit" class="btn-primary-custom" [disabled]="feedbackForm.invalid">
+                            Submit Feedback <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
 </div>

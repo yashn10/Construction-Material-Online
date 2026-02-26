@@ -1,78 +1,181 @@
-.card-img-top:hover {
-    transition: 1s;
-    -webkit-filter: brightness(60%);
-    -webkit-transform: scale(1.1);
+.about-hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .about-hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.65));
+        display: flex;
+        align-items: center;
+
+        h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--gray-300);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+    }
 }
 
-a:hover {
-    transition: 1s;
-    -webkit-filter: brightness(60%);
-    -webkit-transform: scale(1.1);
+.section-badge {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
 }
 
-.centered {
-    color: white;
+.mission-text {
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 16px;
+    }
+}
+
+.mission-image {
+    img {
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
+.about-service-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .about-service-body {
+        padding: 20px;
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 14px;
+        }
+    }
+}
+
+.service-cta {
+    color: var(--accent) !important;
+    font-weight: 600;
+    font-size: 0.88rem;
+
+    i {
+        font-size: 0.75rem;
+        margin-left: 4px;
+        transition: transform var(--transition-fast);
+    }
+
+    &:hover i {
+        transform: translateX(4px);
+    }
+}
+
+.stats-section {
+    position: relative;
+    padding: 80px 0;
+    background: url('/assets/scy2.jpg') center/cover no-repeat fixed;
+}
+
+.stats-overlay {
     position: absolute;
-    top: 60%;
-    left: 24%;
-    padding: 0px 20px;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
 }
 
-/* Top left text */
-.top-right {
-    position: absolute;
-    top: 185px;
-    left: 100px;
-    // text-align: center;
+.stats-content {
+    position: relative;
+    z-index: 1;
 }
 
-.vl {
-    border-left: 3px solid orange;
-    height: 250px;
-    margin-top: -230px;
-    margin-left: -25px;
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
 }
 
+.stat-item {
+    i {
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 12px;
+    }
 
-.footers a {
-    color: #696969;
+    strong {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 2.25rem;
+        color: var(--white);
+        font-weight: 800;
+        margin-bottom: 4px;
+    }
+
+    span {
+        color: var(--gray-400);
+        font-size: 0.95rem;
+    }
 }
 
-.footers p {
-    color: #696969;
+@media (max-width: 768px) {
+    .about-hero {
+        height: 300px;
+
+        .about-hero-overlay h1 {
+            font-size: 1.75rem;
+        }
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
 }
 
-.footers ul {
-    line-height: 30px;
-}
-
-#social-fb:hover {
-    color: #3B5998;
-    transition: all .001s;
-}
-
-#social-tw:hover {
-    color: #4099FF;
-    transition: all .001s;
-}
-
-#social-gp:hover {
-    color: #d34836;
-    transition: all .001s;
-}
-
-#social-em:hover {
-    color: #f39c12;
-    transition: all .001s;
-}
-
-.bt {
-    cursor: pointer;
-}
-
-.bt:hover {
-    // box-shadow: 0 0 28px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 5px 8px 5px 5px rgba(0, 0, 0, 0.2);
-    transition: 0.5s;
+@media (max-width: 576px) {
+    .about-hero {
+        height: 250px;
+    }
 }

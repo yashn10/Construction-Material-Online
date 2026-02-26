@@ -1,180 +1,124 @@
-<nav class="navbar navbar-expand-lg navbar-expand-sm   navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- ========== NAVBAR ========== -->
+<nav class="main-nav" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <a routerLink="/home" class="nav-logo">
+      <span class="logo-accent">SD</span>Construction
+    </a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userloggedin == true">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="home" style="margin-left: 15px;"><b>Home</b></a>
-      </li>
+    <button class="nav-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="about" style="margin-left: 15px;"><b>About</b></a>
-      </li>
+    <div class="nav-menu" [class.active]="isMenuOpen">
+      <!-- Logged-in Navigation -->
+      <ul class="nav-links" *ngIf="userloggedin">
+        <li><a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+        <li class="nav-dropdown">
+          <a class="dropdown-trigger">Services <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-content">
+            <a routerLink="/civil" (click)="closeMenu()"><i class="fas fa-hard-hat"></i> Civil Work</a>
+            <a routerLink="/electrical" (click)="closeMenu()"><i class="fas fa-bolt"></i> Electrical Work</a>
+            <a routerLink="/interior" (click)="closeMenu()"><i class="fas fa-couch"></i> Interior Work</a>
+            <a routerLink="/furniture" (click)="closeMenu()"><i class="fas fa-chair"></i> Furniture Work</a>
+            <a routerLink="/painter" (click)="closeMenu()"><i class="fas fa-paint-roller"></i> Painting Work</a>
+          </div>
+        </li>
+        <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+        <li><a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a></li>
+        <li><a routerLink="/feedback" routerLinkActive="active" (click)="closeMenu()">Feedback</a></li>
+      </ul>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="margin-left: 15px; font-weight: bolder;" data-toggle="dropdown"
-          role="button" aria-expanded="false">Services</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" routerLink="civil">Civil Work</a>
-          <a class="dropdown-item" href="#" routerLink="electrical">Electrical Work</a>
-          <a class="dropdown-item" href="#" routerLink="interior">Interior Work</a>
-          <a class="dropdown-item" href="#" routerLink="furniture">Furniture Work</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" routerLink="painter">Painting Work</a>
-        </div>
-      </li>
+      <!-- Guest Navigation -->
+      <ul class="nav-links" *ngIf="!userloggedin">
+        <li><a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+        <li><a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a></li>
+      </ul>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="projects" style="margin-left: 15px;"><b>Projects</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="contact" style="margin-left: 15px;"><b>Contact</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="dashboard" style="margin-left: 15px;"><b>My Dashboard</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="feedback" style="margin-left: 15px;"><b>Feedback</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" style="margin-left: 15px;" (click)="logout()"><b>Logout</b></a>
-      </li>
-
-    </ul>
-  </div>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="userloggedin == false">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="home" style="margin-left: 15px;"><b>Home</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="about" style="margin-left: 15px;"><b>About</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="projects" style="margin-left: 15px;"><b>Projects</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="signup" style="margin-left: 15px;"><b>Signup</b></a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="#" routerLink="login" style="margin-left: 15px;"><b>Login</b></a>
-      </li>
-
-    </ul>
+      <!-- Auth Buttons -->
+      <div class="nav-actions">
+        <a *ngIf="!userloggedin" routerLink="/login" class="btn-nav-outline" (click)="closeMenu()">Login</a>
+        <a *ngIf="!userloggedin" routerLink="/signup" class="btn-nav-solid" (click)="closeMenu()">Sign Up</a>
+        <a *ngIf="userloggedin" class="btn-nav-outline logout-btn" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </div>
   </div>
 </nav>
 
+<!-- ========== ROUTER OUTLET ========== -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
 
-<router-outlet></router-outlet>
-
-
-<section class="footers bg-light pt-5 pb-3" style="display: flex; background-color: black;">
-  <div class="container pt-5">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 footers-one">
-        <div class="footers-logo">
-
-          <a href="#home" class="w3-bar-item w3-button"><span style="color:red; font-size: 30px;"><b>SD</b></span><b
-              style=" font-size: 30px;">Constrution</b></a>
-
+<!-- ========== FOOTER ========== -->
+<footer class="main-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <!-- Brand -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-brand">
+            <a routerLink="/home" class="footer-logo">
+              <span class="logo-accent">SD</span>Construction
+            </a>
+            <p class="mt-3">Your trusted partner for premium construction materials, electrical supplies, furniture, and
+              interior solutions. Building excellence since day one.</p>
+            <div class="social-links mt-3">
+              <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i
+                  class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="footers-info mt-3">
-          <!-- <p>Cras sociis natoque penatibus et magnis Lorem Ipsum tells about the compmany right now the
-                      best.</p> -->
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6 mb-4">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/about">About Us</a></li>
+            <li><a routerLink="/projects">Projects</a></li>
+            <li><a routerLink="/contact">Contact</a></li>
+          </ul>
         </div>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
-          <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
-          <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-2x social"></i></a>
-          <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+
+        <!-- Services -->
+        <div class="col-lg-3 col-md-6 col-6 mb-4">
+          <h5 class="footer-heading">Our Services</h5>
+          <ul class="footer-links">
+            <li><a routerLink="/civil">Civil Work</a></li>
+            <li><a routerLink="/electrical">Electrical Work</a></li>
+            <li><a routerLink="/painter">Painting Work</a></li>
+            <li><a routerLink="/furniture">Furniture</a></li>
+            <li><a routerLink="/interior">Interior Work</a></li>
+          </ul>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-2 footers-two">
-        <h5>Essentials </h5>
-        <ul class="list-unstyled">
-          <li><a href="maintenance.html">Search</a></li>
-          <li><a href="contact.html">Sell your Products</a></li>
-          <li><a href="about.html">Advertise with us</a></li>
-          <li><a href="about.html">Dealers Portal</a></li>
-          <li><a href="about.html">Post Requirements</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-2 footers-three">
-        <h5>Information </h5>
-        <ul class="list-unstyled">
-          <li><a href="maintenance.html">Register Now</a></li>
-          <li><a href="contact.html">Advice</a></li>
-          <li><a href="about.html">Videos</a></li>
-          <li><a href="about.html">Blog</a></li>
-          <li><a href="about.html">Services</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
-        <h5>Explore </h5>
-        <ul class="list-unstyled">
-          <li><a href="maintenance.html">News</a></li>
-          <li><a href="contact.html">Sitemap</a></li>
-          <li><a href="about.html">Testimonials</a></li>
-          <li><a href="about.html">Feedbacks</a></li>
-          <li><a href="about.html">User Agreement</a></li>
-        </ul>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-2 footers-five">
-        <h5>Company </h5>
-        <ul class="list-unstyled">
-          <li><a href="maintenance.html">Career</a></li>
-          <li><a href="about.html">For Parters</a></li>
-          <li><a href="about.html">Terms</a></li>
-          <li><a href="about.html">Policy</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-
-<section class="disclaimer bg-light border">
-  <div class="container">
-    <div class="row ">
-      <div class="col-md-12 py-2">
-        <small>
-          Disclaimer: Element Limited is only an intermediary offering its platform to facilitate the
-          transactions between Seller and Customer/Buyer/User and is not and cannot be a party to or
-          control in any manner any transactions between the Seller and the Customer/Buyer/User. All the
-          offers and discounts on this Website have been extended by various Builder(s)/Developer(s) who
-          have advertised their products. Element is only communicating the offers and not selling or
-          rendering any of those products or services. It neither warrants nor is it making any
-          representations with respect to offer(s) made on the site. Element Limited shall neither be
-          responsible nor liable to mediate or resolve any disputes or disagreements between the
-          Customer/Buyer/User and the Seller and both Seller and Customer/Buyer/User shall settle all such
-          disputes without involving Element Limited in any manner.
-        </small>
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5 class="footer-heading">Contact Info</h5>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> NP12, Nagpur, India</li>
+            <li><i class="fas fa-phone-alt"></i> +0098 9893 5647</li>
+            <li><i class="fas fa-envelope"></i> info&#64;sdconstruction.com</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-
-<section class="copyright border">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12 pt-3">
-        <p class="text-muted">© SDConstruction </p>
-      </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2024 SD Construction. All rights reserved.</p>
     </div>
   </div>
-</section>
+</footer>

@@ -1,95 +1,106 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-html,
-body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    padding: 77px 0px;
-    font-family: 'Numans', sans-serif;
+.login-page {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #1a365d 100%);
+    padding: 40px 20px;
 }
 
-hr {
-    border: 1px solid #ffc312;
-    width: 30%;
-    float: left;
+.login-container {
+    width: 100%;
+    max-width: 440px;
 }
 
-.container {
-    height: 100%;
-    align-content: center;
+.login-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: 40px 36px;
 }
 
-.card {
-    height: 370px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 400px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+
+    .login-icon {
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        color: var(--primary);
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+    }
 }
 
-.social_icon span {
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
+.form-modern {
+    label {
+        i {
+            color: var(--accent);
+            margin-right: 6px;
+            font-size: 0.85rem;
+        }
+    }
 }
 
-.social_icon span:hover {
-    color: white;
+.error-text {
+    color: var(--danger);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    border: none;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    i {
+        font-size: 0.85rem;
+        transition: transform var(--transition-fast);
+    }
+
+    &:hover:not(:disabled) i {
+        transform: translateX(4px);
+    }
 }
 
-.card-header h3 {
-    color: white;
-}
+.login-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-200);
 
-.social_icon {
-    position: absolute;
-    right: 20px;
-    top: -45px;
-}
+    p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        margin: 0;
 
-.input-group-prepend span {
-    width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border: 0 !important;
-}
-
-input:focus {
-    outline: 0 0 0 0 !important;
-    box-shadow: 0 0 0 0 !important;
-
-}
-
-.remember {
-    color: white;
-}
-
-.remember input {
-    width: 20px;
-    height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
-}
-
-.login_btn {
-    margin-top: 20px;
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
-}
-
-.login_btn:hover {
-    color: black;
-    background-color: white;
-}
-
-.links {
-    color: white;
-}
-
-.links a {
-    margin-left: 4px;
+        a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+    }
 }

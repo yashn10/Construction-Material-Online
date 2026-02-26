@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from "../service/userdata.service";
 import Swal from 'sweetalert2';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,36 +13,38 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
 
-
-  constructor(private formbuilder: FormBuilder, private router: Router, private backend: UserdataService, private http: HttpClient) {
+  constructor(
+    private formbuilder: FormBuilder,
+    private router: Router,
+    private backend: UserdataService
+  ) {
     this.loginForm = this.formbuilder.group({
-      email: [''],
-      password: ['']
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
-
 
   login(data: any) {
     this.backend.loginuser(data).subscribe(
       (response) => {
-        this.router.navigate(['/']);
-        Swal.fire(
-          'Successfull!',
-          'User login successfully!',
-          'success'
-        )
         localStorage.setItem("User", data.email);
-        console.log("User login successfully", response);
-      }, (error) => {
+        this.router.navigate(['/dashboard']);
+        Swal.fire({
+          title: 'Welcome!',
+          text: 'You have logged in successfully.',
+          icon: 'success',
+          confirmButtonColor: '#f59e0b'
+        });
+      },
+      (error) => {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: 'Incorrect credentials'
-        })
+          title: 'Login Failed',
+          text: 'Invalid email or password. Please try again.',
+          confirmButtonColor: '#f59e0b'
+        });
         console.log(error);
       }
-    )
+    );
   }
-
 }

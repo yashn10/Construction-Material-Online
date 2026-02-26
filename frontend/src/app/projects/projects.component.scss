@@ -1,25 +1,186 @@
-.carousel-inner img {
-    width: 100%;
+.projects-hero {
+    .carousel-item img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+    }
+
+    .carousel-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px;
+        background: linear-gradient(transparent, rgba(15, 23, 42, 0.8));
+
+        h2 {
+            color: var(--white);
+            font-size: 2rem;
+            margin: 0;
+        }
+    }
+}
+
+.section-badge-dark {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.proj-service-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
     height: 100%;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .proj-card-body {
+        padding: 20px;
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+
+        a {
+            color: var(--accent) !important;
+            font-weight: 600;
+            font-size: 0.88rem;
+
+            i {
+                margin-right: 4px;
+                transition: transform var(--transition-fast);
+            }
+
+            &:hover i {
+                transform: translateX(4px);
+            }
+        }
+    }
 }
 
-.btn:hover {
-    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
-    transition: 0.5s;
+.major-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.major-project-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 220px;
     cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-slow);
+    }
+
+    .major-project-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px 20px;
+        background: linear-gradient(transparent, rgba(15, 23, 42, 0.8));
+
+        h5 {
+            color: var(--white);
+            margin: 0;
+            font-size: 1rem;
+        }
+    }
+
+    &:hover img {
+        transform: scale(1.08);
+    }
 }
 
-.card-img-top:hover {
-    transition: 1s;
-    -webkit-filter: brightness(60%);
-    -webkit-transform: scale(1.1);
+.proj-stats-section {
+    position: relative;
+    padding: 70px 0;
+    background: url('/assets/scy.jpg') center/cover no-repeat fixed;
 }
 
-.centered {
-    color: white;
+.proj-stats-overlay {
     position: absolute;
-    top: 60%;
-    left: 24%;
-    padding: 0px 210px;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    background: rgba(15, 23, 42, 0.88);
+}
+
+.proj-stats-content {
+    position: relative;
+    z-index: 1;
+}
+
+.proj-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.proj-stat {
+    strong {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        color: var(--accent);
+        font-weight: 800;
+    }
+
+    span {
+        color: var(--gray-300);
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .major-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-hero .carousel-item img {
+        height: 300px;
+    }
+
+    .proj-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .major-projects-grid {
+        grid-template-columns: 1fr;
+    }
 }

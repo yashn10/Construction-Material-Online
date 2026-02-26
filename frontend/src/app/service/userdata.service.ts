@@ -6,63 +6,55 @@ import { Injectable } from '@angular/core';
 })
 export class UserdataService {
 
+  private baseUrl = 'http://localhost:5000';
+
   constructor(private http: HttpClient) { }
 
-  // https://construction-api-c904.onrender.com/contact
-
-
   addcontact(data: any) {
-    return this.http.post('https://construction-api-c904.onrender.com/contact', data);
+    return this.http.post(`${this.baseUrl}/contact`, data);
   }
 
   addfeedback(data: any) {
-    return this.http.post('https://construction-api-c904.onrender.com/feedback', data);
+    return this.http.post(`${this.baseUrl}/feedback`, data);
   }
 
   adduser(data: any) {
-    return this.http.post('https://construction-api-c904.onrender.com/register', data);
+    return this.http.post(`${this.baseUrl}/register`, data);
   }
 
   loginuser(data: any) {
-    return this.http.post('https://construction-api-c904.onrender.com/login', data);
-    // return this.http.post('http://localhost:5000/login', data);
+    return this.http.post(`${this.baseUrl}/login`, data);
   }
 
   getpaints() {
-    return this.http.get('https://construction-api-c904.onrender.com/paint');
-    // return this.http.get('http://localhost:5000/paint');
+    return this.http.get(`${this.baseUrl}/paint`);
   }
 
   getelectrical() {
-    return this.http.get('https://construction-api-c904.onrender.com/electrical');
-    // return this.http.get('http://localhost:5000/electrical');
+    return this.http.get(`${this.baseUrl}/electrical`);
   }
 
   getinterior() {
-    return this.http.get('https://construction-api-c904.onrender.com/interior');
-    // return this.http.get('http://localhost:5000/interior');
+    return this.http.get(`${this.baseUrl}/interior`);
   }
 
   getfurniture() {
-    return this.http.get('https://construction-api-c904.onrender.com/furniture');
-    // return this.http.get('http://localhost:5000/furniture');
+    return this.http.get(`${this.baseUrl}/furniture`);
   }
 
   getpaintbyid(id: any) {
-    return this.http.get(`https://construction-api-c904.onrender.com/paint/${id}`);
+    return this.http.get(`${this.baseUrl}/paint/${id}`);
   }
 
   getelectricalbyid(id: any) {
-    return this.http.get(`https://construction-api-c904.onrender.com/electrical/${id}`);
+    return this.http.get(`${this.baseUrl}/electrical/${id}`);
   }
 
   getinteriorbyid(id: any) {
-    return this.http.get(`https://construction-api-c904.onrender.com/interior/${id}`);
+    return this.http.get(`${this.baseUrl}/interior/${id}`);
   }
 
   getfurniturebyid(id: any) {
-    return this.http.get(`https://construction-api-c904.onrender.com/furniture/${id}`);
+    return this.http.get(`${this.baseUrl}/furniture/${id}`);
   }
-
-
 }
