@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  loading: boolean = false;
 
   constructor(
     private formbuilder: FormBuilder,
@@ -25,6 +26,7 @@ export class LoginComponent {
   }
 
   login(data: any) {
+    this.loading = true;
     this.backend.loginuser(data).subscribe(
       (response) => {
         localStorage.setItem("User", data.email);
@@ -35,6 +37,7 @@ export class LoginComponent {
           icon: 'success',
           confirmButtonColor: '#f59e0b'
         });
+        this.loading = false;
       },
       (error) => {
         Swal.fire({
@@ -44,6 +47,7 @@ export class LoginComponent {
           confirmButtonColor: '#f59e0b'
         });
         console.log(error);
+        this.loading = false;
       }
     );
   }

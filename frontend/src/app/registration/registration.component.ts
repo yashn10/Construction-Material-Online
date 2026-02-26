@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class RegistrationComponent {
 
   userForm!: FormGroup;
+  loading: boolean = false;
 
   constructor(
     private formbuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class RegistrationComponent {
   }
 
   addUser(data: any) {
+    this.loading = true;
     if (data.password !== data.cpassword) {
       Swal.fire({
         icon: 'error',
@@ -36,6 +38,7 @@ export class RegistrationComponent {
         text: 'Passwords do not match. Please try again.',
         confirmButtonColor: '#f59e0b'
       });
+      this.loading = false;
       return;
     }
 
@@ -48,6 +51,7 @@ export class RegistrationComponent {
           icon: 'success',
           confirmButtonColor: '#f59e0b'
         });
+        this.loading = false;
       },
       (error) => {
         Swal.fire({
@@ -56,6 +60,7 @@ export class RegistrationComponent {
           text: error.error?.error || 'Something went wrong. Please try again.',
           confirmButtonColor: '#f59e0b'
         });
+        this.loading = false;
       }
     );
   }

@@ -77,7 +77,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-primary-custom register-submit" [disabled]="userForm.invalid">
+                    <button type="submit" class="btn-primary-custom register-submit"
+                        [disabled]="userForm.invalid || loading">
                         Create Account <i class="fas fa-arrow-right"></i>
                     </button>
 

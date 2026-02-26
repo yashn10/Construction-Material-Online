@@ -27,7 +27,7 @@
                     </p>
                 </div>
 
-                <button type="submit" class="btn-primary-custom login-submit" [disabled]="loginForm.invalid">
+                <button type="submit" class="btn-primary-custom login-submit" [disabled]="loginForm.invalid || loading">
                     Sign In <i class="fas fa-arrow-right"></i>
                 </button>
             </form>
